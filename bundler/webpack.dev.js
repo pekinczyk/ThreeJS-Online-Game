@@ -12,8 +12,7 @@ module.exports = merge(
     commonConfiguration,
     {
         mode: 'development',
-        devServer:
-        {
+        devServer: {
             host: '0.0.0.0',
             port: portFinderSync.getPort(8080),
             contentBase: './dist',
@@ -23,8 +22,7 @@ module.exports = merge(
             useLocalIp: true,
             disableHostCheck: true,
             overlay: true,
-            noInfo: true,
-            after: function(app, server, compiler)
+            after: function(app, server)
             {
                 const port = server.options.port
                 const https = server.options.https ? 's' : ''
@@ -34,6 +32,6 @@ module.exports = merge(
                 
                 console.log(`Project running at:\n  - ${infoColor(domain1)}\n  - ${infoColor(domain2)}`)
             }
-        }
+        },
     }
 )
